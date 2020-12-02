@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b64aed70-bc7e-440e-bf87-62e4a749fd0d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../HW2/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HW5Source/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../HW5Source/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW5Source/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW5Source/Plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/Plot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW5Source/QLearning.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/QLearning.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW5Source/QLearning.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/QLearning.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW5Source/Sarsa.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/Sarsa.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW5Source/Sarsa.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/Sarsa.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeFiles/HW5Source.dir/CXX.includecache" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeFiles/HW5Source.dir/CartPole.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeFiles/HW5Source.dir/Gridworld.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeFiles/HW5Source.dir/MountainCar.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeFiles/HW5Source.dir/QLearning.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeFiles/HW5Source.dir/Sarsa.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeFiles/HW5Source.dir/depend.internal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeFiles/HW5Source.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeFiles/HW5Source.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeFiles/HW5Source.dir/main.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/HW5Source" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/HW5Source" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-release/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/cmake-build-release/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-release/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/cmake-build-release/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-release/CMakeFiles/HW5Source.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/cmake-build-release/CMakeFiles/HW5Source.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-release/CMakeFiles/HW5Source.dir/QLearning.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/cmake-build-release/CMakeFiles/HW5Source.dir/QLearning.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-release/CMakeFiles/HW5Source.dir/Sarsa.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/cmake-build-release/CMakeFiles/HW5Source.dir/Sarsa.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-release/CMakeFiles/HW5Source.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/cmake-build-release/CMakeFiles/HW5Source.dir/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-release/Cart Pole_out.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/cmake-build-release/Cart Pole_out.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-release/Gridworld_out.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/cmake-build-release/Gridworld_out.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-release/HW5Source" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/cmake-build-release/HW5Source" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-release/Mountain Car_out.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/cmake-build-release/Mountain Car_out.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../HW5Source/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/main.cpp" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1l5HPOOJ2fxCeLCg8bobTRpIvbr" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunManager">
+    <configuration name="DataProcess" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="687final" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DataProcess.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.DataProcess" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b64aed70-bc7e-440e-bf87-62e4a749fd0d" name="Default Changelist" comment="" />
+      <created>1606880007247</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1606880007247</updated>
+      <workItem from="1606916540603" duration="331000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1293" height="212" key="GridCell.Tab.0.bottom" timestamp="1606882675289">
+      <screen x="0" y="23" width="1440" height="835" />
+    </state>
+    <state width="1293" height="212" key="GridCell.Tab.0.bottom/0.23.1440.834@0.23.1440.834" timestamp="1606880308016" />
+    <state width="1293" height="212" key="GridCell.Tab.0.bottom/0.23.1440.835@0.23.1440.835" timestamp="1606882675289" />
+    <state width="1293" height="212" key="GridCell.Tab.0.center" timestamp="1606882675289">
+      <screen x="0" y="23" width="1440" height="835" />
+    </state>
+    <state width="1293" height="212" key="GridCell.Tab.0.center/0.23.1440.834@0.23.1440.834" timestamp="1606880308016" />
+    <state width="1293" height="212" key="GridCell.Tab.0.center/0.23.1440.835@0.23.1440.835" timestamp="1606882675289" />
+    <state width="1293" height="212" key="GridCell.Tab.0.left" timestamp="1606882675288">
+      <screen x="0" y="23" width="1440" height="835" />
+    </state>
+    <state width="1293" height="212" key="GridCell.Tab.0.left/0.23.1440.834@0.23.1440.834" timestamp="1606880308015" />
+    <state width="1293" height="212" key="GridCell.Tab.0.left/0.23.1440.835@0.23.1440.835" timestamp="1606882675288" />
+    <state width="1293" height="212" key="GridCell.Tab.0.right" timestamp="1606882675289">
+      <screen x="0" y="23" width="1440" height="835" />
+    </state>
+    <state width="1293" height="212" key="GridCell.Tab.0.right/0.23.1440.834@0.23.1440.834" timestamp="1606880308016" />
+    <state width="1293" height="212" key="GridCell.Tab.0.right/0.23.1440.835@0.23.1440.835" timestamp="1606882675289" />
+  </component>
+</project>
