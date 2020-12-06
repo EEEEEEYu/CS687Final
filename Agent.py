@@ -46,17 +46,17 @@ class OfflineRandomEnsembleMixtureAgent:
     """
     Implementation of REM-DQN
     """
-    def __init__(self, observation_space: int, action_space: int, cfg: dict):
+    def __init__(self, observation_space: int, action_space: int, config: dict):
         self.observation_space = observation_space
         self.action_space = action_space
         self.summary_writer = None
         self.name = 'RandomEnsembleMixtureAgent'
-        self.summary_checkpoint = cfg['SUMMARY_CHECKPOINT']
+        self.summary_checkpoint = config['SUMMARY_CHECKPOINT']
         self.batches_done = 0
 
-        self.target_update_steps = cfg['TARGET_UPDATE_INTERVAL']
-        self.gamma = cfg['GAMMA']
-        self.num_heads = cfg['NUM_HEADS']
+        self.target_update_steps = config['TARGET_UPDATE_INTERVAL']
+        self.gamma = config['GAMMA']
+        self.num_heads = config['NUM_HEADS']
 
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         print('Utilizing device {}'.format(self.device))
@@ -64,7 +64,7 @@ class OfflineRandomEnsembleMixtureAgent:
         self.target = DQNMultiHead(observation_space, action_space, self.num_heads).to(self.device)
         self.target.load_state_dict(self.policy.state_dict())
         self.target.eval()
-        self.optimizer = optim.Adam(self.policy.parameters(), lr=cfg['LEARNING_RATE'])
+        self.optimizer = optim.Adam(self.policy.parameters(), lr=config['LEARNING_RATE'])
         self.loss = nn.SmoothL1Loss()
         self.loss_total = 0
 
@@ -126,14 +126,18 @@ class OfflineRandomEnsembleMixtureAgent:
     def print_model(self):
         torchsummary.summary(self.policy, input_size=(self.observation_space,))
 
+    def get_action_prob(self,state):
+        with torch.no_grad():
+            self.policy.eval()
+            state = torch.tensor(state).float().unsqueeze(0).to(self.device)
+            avg_q_values = torch.mean(self.policy(state), dim=0)
+            return avg_q_values.softmax(dim = 1)
+
     def get_total_loss(self):
         temp = self.loss_total
         self.loss_total = 0
         return temp
 
-    def save(self, epoch):
-        directory = os.path.join('checkpoint',
-                                 self.name,
-                                 str(epoch) + '.pt')
-        os.makedirs('checkpoint/' + self.name, exist_ok=True)
-        torch.save(self.target, directory)
+    def get_batches_done(self):
+        return self.batches_done
+

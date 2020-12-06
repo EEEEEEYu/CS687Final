@@ -1,6 +1,7 @@
 import yaml
 import torch
 import numpy as np
+import os
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 from DataProcess import *
@@ -17,15 +18,21 @@ def train(config: dict):
     observation_space = config['STATE_DIMENSION']
     action_space = config['ACTION_DIMENSION']
 
-    print('Creating Agent.')
-    agent = OfflineRandomEnsembleMixtureAgent(observation_space,action_space,config)
+    if os.path.exists(config['CHECKPOINT_PATH']):
+        print("Checkpoint found, loading previous agent...")
+        with open(config['CHECKPOINT_PATH'],'rb') as file:
+            agent = torch.load(file)
+    else:
+        print("No checkpoint found, initializing new agent...")
+        agent = OfflineRandomEnsembleMixtureAgent(observation_space,action_space,config)
     agent.print_model()
 
-    print('Initializing Dataloader.')
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print('Utilizing device {}'.format(device))
+
+    print('Initializing Dataloader.')
     training_data = OfflineDataset(config['TRAIN_DATA_PATH'],config['TRAIN_INDEX_PATH'],int(1000000*config['TRAIN_PERCENTAGE']),
-                                   config['STATE_DIMENSION'],config['ORIGINAL_DATA_DIRECTORY'])
+                                   config['STATE_DIMENSION'],config['TRAIN_DATA_DIRECTORY'])
     data_loader = DataLoader(dataset=training_data,
                              batch_size=config['BATCH_SIZE'],
                              shuffle=True,
@@ -36,9 +43,12 @@ def train(config: dict):
     for e in range(1, config['EPOCHS'] + 1):
         for i_batch, sample_batched in enumerate(tqdm(data_loader, leave=False)):
             agent.learn(sample_batched)
-            if i_batch % 500==0:
-                print("Batch trained:"+str(i_batch)+" Loss for new 500 batches:"+str(agent.get_total_loss()))
-        agent.save(e)
+            if i_batch > 0 and i_batch % 500 == 0:
+                print("Batch trained:"+str(i_batch)+" Loss for new batches:"+str(agent.get_total_loss()))
+            if i_batch > 0 and i_batch % config['CHECKPOINT_SAVE_INTERVAL'] == 0:
+                with open(config['CHECKPOINT_PATH'],'wb') as file:
+                    print("Checkpoint......")
+                    torch.save(agent,file)
 
 
 def main():

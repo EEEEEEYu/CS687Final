@@ -135,6 +135,35 @@ class OfflineDataset(Dataset):
         return sample
 
 
+class Episode:
+    def __init__(self,state,reward,transition):
+        self.state = state
+        self.reward = reward
+        self.transition = transition
+
+
+class SafetyTestDataset:
+    def __init__(self,episode_path,index_path,total_episodes):
+        state, action, reward, transition, next_state, done = [], [], [], [], [], []
+        data = pd.read_csv(episode_path, header = None)
+        index = pd.read_csv(index_path, header = None)
+        start_index, end_index = 0, 0
+        for count in range(total_episodes):
+            episode_length = index.iloc[count, 0]
+            end_index += episode_length
+
+            cur_state = data.iloc[start_index:end_index, 0].tolist()
+            state += cur_state
+            action += data.iloc[start_index:end_index, 1].tolist()
+            reward += data.iloc[start_index:end_index, 2].tolist()
+            transition += data.iloc[start_index:end_index, 3].tolist()
+            next_state += cur_state[1:] + [0]
+            done += [False] * episode_length
+            done[-1] = True
+
+            start_index = end_index
+
+
 class Summary(object):
     """
     Logs metrics to tensorboard files
