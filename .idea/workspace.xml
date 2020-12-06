@@ -20,14 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b64aed70-bc7e-440e-bf87-62e4a749fd0d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Agent.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DataExploration.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config.yml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../HW2/.idea/vcs.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../HW5Source/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../HW5Source/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/687final.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/687final.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataProcess.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataProcess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../HW5Source/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../HW5Source/Plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/Plot.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../HW5Source/QLearning.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/QLearning.cpp" afterDir="false" />
@@ -152,7 +153,13 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1606880007247</updated>
-      <workItem from="1606916540603" duration="4871000" />
+      <workItem from="1606916540603" duration="5140000" />
+      <workItem from="1607145186828" duration="2863000" />
+      <workItem from="1607149188150" duration="832000" />
+      <workItem from="1607159638973" duration="867000" />
+      <workItem from="1607167552619" duration="61000" />
+      <workItem from="1607167622743" duration="4167000" />
+      <workItem from="1607176490077" duration="16389000" />
     </task>
     <servers />
   </component>
@@ -169,43 +176,44 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="330" y="233" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606917332798">
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
     <state x="330" y="233" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1792.1097@0.23.1792.1097" timestamp="1606917332798" />
-    <state width="1690" height="303" key="GridCell.Tab.0.bottom" timestamp="1606921683270">
+    <state width="1690" height="330" key="GridCell.Tab.0.bottom" timestamp="1607256755461">
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
     <state width="1293" height="212" key="GridCell.Tab.0.bottom/0.23.1440.834@0.23.1440.834" timestamp="1606880308016" />
     <state width="1293" height="212" key="GridCell.Tab.0.bottom/0.23.1440.835@0.23.1440.835" timestamp="1606882675289" />
-    <state width="1690" height="303" key="GridCell.Tab.0.bottom/0.23.1792.1097@0.23.1792.1097" timestamp="1606921683270" />
-    <state width="1690" height="303" key="GridCell.Tab.0.center" timestamp="1606921683269">
+    <state width="1690" height="330" key="GridCell.Tab.0.bottom/0.23.1792.1097@0.23.1792.1097" timestamp="1607256755461" />
+    <state width="1690" height="330" key="GridCell.Tab.0.center" timestamp="1607256755460">
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
     <state width="1293" height="212" key="GridCell.Tab.0.center/0.23.1440.834@0.23.1440.834" timestamp="1606880308016" />
     <state width="1293" height="212" key="GridCell.Tab.0.center/0.23.1440.835@0.23.1440.835" timestamp="1606882675289" />
-    <state width="1690" height="303" key="GridCell.Tab.0.center/0.23.1792.1097@0.23.1792.1097" timestamp="1606921683269" />
-    <state width="1690" height="303" key="GridCell.Tab.0.left" timestamp="1606921683268">
+    <state width="1690" height="330" key="GridCell.Tab.0.center/0.23.1792.1097@0.23.1792.1097" timestamp="1607256755460" />
+    <state width="1690" height="330" key="GridCell.Tab.0.left" timestamp="1607256755459">
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
     <state width="1293" height="212" key="GridCell.Tab.0.left/0.23.1440.834@0.23.1440.834" timestamp="1606880308015" />
     <state width="1293" height="212" key="GridCell.Tab.0.left/0.23.1440.835@0.23.1440.835" timestamp="1606882675288" />
-    <state width="1690" height="303" key="GridCell.Tab.0.left/0.23.1792.1097@0.23.1792.1097" timestamp="1606921683268" />
-    <state width="1690" height="303" key="GridCell.Tab.0.right" timestamp="1606921683269">
+    <state width="1690" height="330" key="GridCell.Tab.0.left/0.23.1792.1097@0.23.1792.1097" timestamp="1607256755459" />
+    <state width="1690" height="330" key="GridCell.Tab.0.right" timestamp="1607256755460">
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
     <state width="1293" height="212" key="GridCell.Tab.0.right/0.23.1440.834@0.23.1440.834" timestamp="1606880308016" />
     <state width="1293" height="212" key="GridCell.Tab.0.right/0.23.1440.835@0.23.1440.835" timestamp="1606882675289" />
-    <state width="1690" height="303" key="GridCell.Tab.0.right/0.23.1792.1097@0.23.1792.1097" timestamp="1606921683269" />
+    <state width="1690" height="330" key="GridCell.Tab.0.right/0.23.1792.1097@0.23.1792.1097" timestamp="1607256755460" />
     <state x="367" y="210" key="SettingsEditor" timestamp="1606917405912">
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
     <state x="367" y="210" key="SettingsEditor/0.23.1792.1097@0.23.1792.1097" timestamp="1606917405912" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/CS687Final$main.coverage" NAME="main Coverage Results" MODIFIED="1606921683262" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/CS687Final$DataProcess.coverage" NAME="DataProcess Coverage Results" MODIFIED="1606918047547" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CS687Final$main.coverage" NAME="main Coverage Results" MODIFIED="1607256755453" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CS687Final$DataProcess.coverage" NAME="DataProcess Coverage Results" MODIFIED="1607172725197" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
