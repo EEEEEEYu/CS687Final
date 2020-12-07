@@ -20,47 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b64aed70-bc7e-440e-bf87-62e4a749fd0d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/HCOPE.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../HW2/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../HW5Source/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../HW5Source/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/687final.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/687final.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/Agent.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DataProcess.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataProcess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HCOPE.py" beforeDir="false" afterPath="$PROJECT_DIR$/HCOPE.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW5Source/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW5Source/Plot.py" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/Plot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW5Source/QLearning.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/QLearning.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW5Source/QLearning.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/QLearning.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW5Source/Sarsa.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/Sarsa.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW5Source/Sarsa.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/Sarsa.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeFiles/HW5Source.dir/CXX.includecache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeFiles/HW5Source.dir/CartPole.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeFiles/HW5Source.dir/Gridworld.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeFiles/HW5Source.dir/MountainCar.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeFiles/HW5Source.dir/QLearning.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeFiles/HW5Source.dir/Sarsa.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeFiles/HW5Source.dir/depend.internal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeFiles/HW5Source.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeFiles/HW5Source.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeFiles/HW5Source.dir/main.cpp.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/HW5Source" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/cmake-build-debug/HW5Source" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-release/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/cmake-build-release/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-release/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/cmake-build-release/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-release/CMakeFiles/HW5Source.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/cmake-build-release/CMakeFiles/HW5Source.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-release/CMakeFiles/HW5Source.dir/QLearning.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/cmake-build-release/CMakeFiles/HW5Source.dir/QLearning.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-release/CMakeFiles/HW5Source.dir/Sarsa.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/cmake-build-release/CMakeFiles/HW5Source.dir/Sarsa.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-release/CMakeFiles/HW5Source.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/cmake-build-release/CMakeFiles/HW5Source.dir/main.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-release/Cart Pole_out.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/cmake-build-release/Cart Pole_out.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-release/Gridworld_out.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/cmake-build-release/Gridworld_out.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-release/HW5Source" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/cmake-build-release/HW5Source" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW5Source/cmake-build-release/Mountain Car_out.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/cmake-build-release/Mountain Car_out.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../HW5Source/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../HW5Source/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,9 +56,9 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
-  <component name="RunManager" selected="Python.Agent">
+  <component name="RunManager" selected="Python.main">
     <configuration name="Agent" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="687final" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -135,6 +103,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="HCOPE" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="687final" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/HCOPE.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="687final" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -161,11 +150,13 @@
       <item itemvalue="Python.DataProcess" />
       <item itemvalue="Python.main" />
       <item itemvalue="Python.Agent" />
+      <item itemvalue="Python.HCOPE" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.Agent" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.HCOPE" />
+        <item itemvalue="Python.Agent" />
         <item itemvalue="Python.DataProcess" />
       </list>
     </recent_temporary>
@@ -208,38 +199,58 @@
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
     <state x="330" y="233" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1792.1097@0.23.1792.1097" timestamp="1606917332798" />
-    <state width="1690" height="330" key="GridCell.Tab.0.bottom" timestamp="1607264092284">
-      <screen x="0" y="23" width="1792" height="1097" />
+    <state width="1202" height="192" key="GridCell.Tab.0.bottom" timestamp="1607328442490">
+      <screen x="0" y="23" width="1440" height="822" />
     </state>
+    <state width="1202" height="192" key="GridCell.Tab.0.bottom/0.23.1440.822@0.23.1440.822" timestamp="1607328442490" />
+    <state width="1293" height="192" key="GridCell.Tab.0.bottom/0.23.1440.823@0.23.1440.823" timestamp="1607320180546" />
+    <state width="1293" height="192" key="GridCell.Tab.0.bottom/0.23.1440.825@0.23.1440.825" timestamp="1607321101066" />
+    <state width="1293" height="212" key="GridCell.Tab.0.bottom/0.23.1440.828@0.23.1440.828" timestamp="1607305300468" />
+    <state width="1293" height="212" key="GridCell.Tab.0.bottom/0.23.1440.829@0.23.1440.829" timestamp="1607305656192" />
     <state width="1293" height="212" key="GridCell.Tab.0.bottom/0.23.1440.834@0.23.1440.834" timestamp="1606880308016" />
     <state width="1293" height="212" key="GridCell.Tab.0.bottom/0.23.1440.835@0.23.1440.835" timestamp="1606882675289" />
     <state width="1690" height="330" key="GridCell.Tab.0.bottom/0.23.1792.1097@0.23.1792.1097" timestamp="1607264092284" />
-    <state width="1690" height="330" key="GridCell.Tab.0.center" timestamp="1607264092284">
-      <screen x="0" y="23" width="1792" height="1097" />
+    <state width="1202" height="192" key="GridCell.Tab.0.center" timestamp="1607328442489">
+      <screen x="0" y="23" width="1440" height="822" />
     </state>
+    <state width="1202" height="192" key="GridCell.Tab.0.center/0.23.1440.822@0.23.1440.822" timestamp="1607328442489" />
+    <state width="1293" height="192" key="GridCell.Tab.0.center/0.23.1440.823@0.23.1440.823" timestamp="1607320180545" />
+    <state width="1293" height="192" key="GridCell.Tab.0.center/0.23.1440.825@0.23.1440.825" timestamp="1607321101065" />
+    <state width="1293" height="212" key="GridCell.Tab.0.center/0.23.1440.828@0.23.1440.828" timestamp="1607305300467" />
+    <state width="1293" height="212" key="GridCell.Tab.0.center/0.23.1440.829@0.23.1440.829" timestamp="1607305656191" />
     <state width="1293" height="212" key="GridCell.Tab.0.center/0.23.1440.834@0.23.1440.834" timestamp="1606880308016" />
     <state width="1293" height="212" key="GridCell.Tab.0.center/0.23.1440.835@0.23.1440.835" timestamp="1606882675289" />
     <state width="1690" height="330" key="GridCell.Tab.0.center/0.23.1792.1097@0.23.1792.1097" timestamp="1607264092284" />
-    <state width="1690" height="330" key="GridCell.Tab.0.left" timestamp="1607264092283">
-      <screen x="0" y="23" width="1792" height="1097" />
+    <state width="1202" height="192" key="GridCell.Tab.0.left" timestamp="1607328442489">
+      <screen x="0" y="23" width="1440" height="822" />
     </state>
+    <state width="1202" height="192" key="GridCell.Tab.0.left/0.23.1440.822@0.23.1440.822" timestamp="1607328442489" />
+    <state width="1293" height="192" key="GridCell.Tab.0.left/0.23.1440.823@0.23.1440.823" timestamp="1607320180544" />
+    <state width="1293" height="192" key="GridCell.Tab.0.left/0.23.1440.825@0.23.1440.825" timestamp="1607321101065" />
+    <state width="1293" height="212" key="GridCell.Tab.0.left/0.23.1440.828@0.23.1440.828" timestamp="1607305300466" />
+    <state width="1293" height="212" key="GridCell.Tab.0.left/0.23.1440.829@0.23.1440.829" timestamp="1607305656191" />
     <state width="1293" height="212" key="GridCell.Tab.0.left/0.23.1440.834@0.23.1440.834" timestamp="1606880308015" />
     <state width="1293" height="212" key="GridCell.Tab.0.left/0.23.1440.835@0.23.1440.835" timestamp="1606882675288" />
     <state width="1690" height="330" key="GridCell.Tab.0.left/0.23.1792.1097@0.23.1792.1097" timestamp="1607264092283" />
-    <state width="1690" height="330" key="GridCell.Tab.0.right" timestamp="1607264092284">
-      <screen x="0" y="23" width="1792" height="1097" />
+    <state width="1202" height="192" key="GridCell.Tab.0.right" timestamp="1607328442489">
+      <screen x="0" y="23" width="1440" height="822" />
     </state>
+    <state width="1202" height="192" key="GridCell.Tab.0.right/0.23.1440.822@0.23.1440.822" timestamp="1607328442489" />
+    <state width="1293" height="192" key="GridCell.Tab.0.right/0.23.1440.823@0.23.1440.823" timestamp="1607320180545" />
+    <state width="1293" height="192" key="GridCell.Tab.0.right/0.23.1440.825@0.23.1440.825" timestamp="1607321101066" />
+    <state width="1293" height="212" key="GridCell.Tab.0.right/0.23.1440.828@0.23.1440.828" timestamp="1607305300467" />
+    <state width="1293" height="212" key="GridCell.Tab.0.right/0.23.1440.829@0.23.1440.829" timestamp="1607305656192" />
     <state width="1293" height="212" key="GridCell.Tab.0.right/0.23.1440.834@0.23.1440.834" timestamp="1606880308016" />
     <state width="1293" height="212" key="GridCell.Tab.0.right/0.23.1440.835@0.23.1440.835" timestamp="1606882675289" />
     <state width="1690" height="330" key="GridCell.Tab.0.right/0.23.1792.1097@0.23.1792.1097" timestamp="1607264092284" />
-    <state x="367" y="210" key="SettingsEditor" timestamp="1606917405912">
-      <screen x="0" y="23" width="1792" height="1097" />
+    <state x="295" y="129" key="SettingsEditor" timestamp="1607305277412">
+      <screen x="0" y="23" width="1440" height="828" />
     </state>
+    <state x="295" y="129" key="SettingsEditor/0.23.1440.828@0.23.1440.828" timestamp="1607305277412" />
     <state x="367" y="210" key="SettingsEditor/0.23.1792.1097@0.23.1792.1097" timestamp="1606917405912" />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/CS687Final$main.coverage" NAME="main Coverage Results" MODIFIED="1607258999321" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/CS687Final$DataProcess.coverage" NAME="DataProcess Coverage Results" MODIFIED="1607172725197" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/CS687Final$Agent.coverage" NAME="Agent Coverage Results" MODIFIED="1607264092278" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <state x="355" y="59" width="604" height="735" key="find.popup" timestamp="1607310666570">
+      <screen x="0" y="23" width="1440" height="823" />
+    </state>
+    <state x="355" y="59" width="604" height="735" key="find.popup/0.23.1440.823@0.23.1440.823" timestamp="1607310666570" />
   </component>
 </project>

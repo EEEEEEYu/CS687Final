@@ -19,8 +19,10 @@ class DQNMultiHead(nn.Module):
 
         self.fc1 = nn.Linear(in_features=observation_space, out_features=128)
         self.bn1 = nn.BatchNorm1d(128)
-        self.fc2 = nn.Linear(in_features=128, out_features=32)
-        self.bn2 = nn.BatchNorm1d(32)
+        self.fc2 = nn.Linear(in_features=128, out_features=64)
+        self.bn2 = nn.BatchNorm1d(64)
+        self.fc3 = nn.Linear(in_features=64, out_features=32)
+        self.bn3 = nn.BatchNorm1d(32)
 
         self.heads = nn.Conv1d(in_channels=32 * num_heads,
                                out_channels=action_space * num_heads,
@@ -35,6 +37,9 @@ class DQNMultiHead(nn.Module):
         x = self.elu(x)
         x = self.fc2(x)
         x = self.bn2(x)
+        x = self.elu(x)
+        x = self.fc3(x)
+        x = self.bn3(x)
         x = self.elu(x)
 
         x = x.repeat(1, self.num_heads).unsqueeze(-1)
