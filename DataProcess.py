@@ -153,18 +153,33 @@ class OfflineDataset(Dataset):
 
 
 class Episode:
-    def __init__(self, state, reward, transition, length):
+    def __init__(self, state, action, reward, transition, length):
         self.length = length
+        self.action = action
         self.state = state
         self.reward = reward
         self.transition = transition
 
+    def __len__(self):
+        return self.length
 
-class SafetyTestDataset(Dataset):
+    def get_state(self):
+        return self.state
+
+    def get_action(self):
+        return self.action
+
+    def get_reward(self):
+        return self.reward
+
+    def get_transition(self):
+        return self.transition
+
+
+class SafetyTestDataset:
     def __init__(self, episode_path, index_path, total_episodes, state_dim):
         print("Generating safety test dataset......")
         self.episodes = []
-        self.states = []
         data = pd.read_csv(episode_path, header=None)
         index = pd.read_csv(index_path, header=None)
         start_index, end_index = 0, 0
@@ -172,11 +187,16 @@ class SafetyTestDataset(Dataset):
             episode_length = index.iloc[count, 0]
             end_index += episode_length
 
-            cur_state = data.iloc[start_index:end_index, 0].tolist()
+            state = data.iloc[start_index:end_index, 0].tolist()
+            action = data.iloc[start_index:end_index, 1].tolist()
             reward = data.iloc[start_index:end_index, 2].tolist()
             transition = data.iloc[start_index:end_index, 3].tolist()
-            self.episodes.append(Episode(cur_state, reward, transition, episode_length))
-            self.states.append(one_hot(torch.tensor(cur_state, dtype=torch.int64), state_dim).float())
+
+            state = one_hot(torch.tensor(state, dtype=torch.int64), state_dim).float()
+            action = torch.tensor(action, dtype = torch.int64)
+            reward = torch.tensor(reward).float()
+            transition = torch.tensor(transition).float()
+            self.episodes.append(Episode(state, action, reward, transition, episode_length))
 
             start_index = end_index
         print("Generating safety test dataset......Done!", flush=True)
@@ -185,11 +205,7 @@ class SafetyTestDataset(Dataset):
         return len(self.episodes)
 
     def __getitem__(self, item):
-        sample = {
-            'episodes': self.episodes[item],
-            'states': self.states[item]
-        }
-        return sample
+        return self.episodes[item]
 
 
 class Summary(object):

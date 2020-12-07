@@ -5,10 +5,22 @@ from DataProcess import OfflineDataset, SafetyTestDataset
 from Agent import OfflineRandomEnsembleMixtureAgent
 
 
-def PDIS(data_loader, agent):
-    for sampled_batch in data_loader:
-        # action_prob = agent.get_action_prob(sampled_batch)
-        print(sampled_batch[0])
+def PDIS(data_loader, agent, gamma):
+    for sampled_episode in data_loader:
+        state = sampled_episode.get_state()
+        action = sampled_episode.get_action()
+        reward = sampled_episode.get_reward()
+        transition = sampled_episode.get_transition()
+
+        action_prob = agent.get_action_prob(state)
+        length = len(sampled_episode)
+        cur_gamma,IS_weight = 1.0,1.0
+        J_estimated = 0.0
+        for t in range(length):
+            IS_weight *= action_prob[t][action[t]]/transition[t]
+            J_estimated += cur_gamma * IS_weight * reward[t]
+            cur_gamma *= gamma
+        return J_estimated
 
 
 def SafetyTest(agent, dataset, threshold):
@@ -18,13 +30,8 @@ def SafetyTest(agent, dataset, threshold):
 def HCOPE(config):
     testing_data = SafetyTestDataset(config['TEST_DATA_PATH'], config['TEST_INDEX_PATH'],
                                      int(1000000 * config['TEST_PERCENTAGE']), config['STATE_DIMENSION'])
-    data_loader = DataLoader(dataset=testing_data,
-                             batch_size=config['BATCH_SIZE'],
-                             shuffle=True,
-                             pin_memory=True,
-                             num_workers=8)
-    agent = torch.load(config['CHECKPOINT_PATH'])
-    PDIS(data_loader, agent)
+    agent = OfflineRandomEnsembleMixtureAgent(config['STATE_DIMENSION'], config['ACTION_DIMENSION'], config)
+    PDIS(testing_data, agent, config['GAMMA'])
 
 
 def main():
