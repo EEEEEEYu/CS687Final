@@ -36,7 +36,8 @@ def train(config: dict):
                                    config['STATE_DIMENSION'], config['TRAIN_DATA_DIRECTORY'])
     print('Initializing Testing Data......')
     testing_data = SafetyTestDataset(config['TEST_DATA_PATH'], config['TEST_INDEX_PATH'],
-                                     int(1000000 * config['TEST_PERCENTAGE']), config['STATE_DIMENSION'])
+                                     int(1000000 * config['TEST_PERCENTAGE']), config['STATE_DIMENSION'],
+                                     torch.device('cuda' if torch.cuda.is_available() else 'cpu'))
     evaluation = HCOPE(testing_data)
     data_loader = DataLoader(dataset=training_data,
                              batch_size=config['BATCH_SIZE'],

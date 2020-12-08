@@ -1,12 +1,9 @@
 import pandas as pd
 import os
 import torch
-from torch.utils.tensorboard import SummaryWriter
 from torch.utils.data import Dataset
 from torch.nn.functional import one_hot
 import yaml
-import pickle
-import datetime
 
 
 # Split original dataset into 2 groups(training set and safety test set), each group has a episode file and a index file
@@ -132,7 +129,7 @@ class Episode:
 
 
 class SafetyTestDataset:
-    def __init__(self, episode_path, index_path, total_episodes, state_dim):
+    def __init__(self, episode_path, index_path, total_episodes, state_dim, device):
         print("Generating safety test dataset......")
         self.episodes = []
         self.index = 0
@@ -148,11 +145,11 @@ class SafetyTestDataset:
             reward = data.iloc[start_index:end_index, 2].tolist()
             transition = data.iloc[start_index:end_index, 3].tolist()
 
-            state = one_hot(torch.tensor(state, dtype=torch.int64), state_dim).float()
-            action = torch.tensor(action, dtype = torch.int64)
-            reward = torch.tensor(reward).float()
-            transition = torch.tensor(transition).float()
-            self.episodes.append(Episode(state, action, reward, transition, episode_length))
+            state = one_hot(torch.tensor(state, dtype=torch.int64), state_dim).float().to(device)
+            action = torch.tensor(action, dtype = torch.int64).to(device)
+            reward = torch.tensor(reward).float().to(device)
+            transition = torch.tensor(transition).float().to(device)
+            self.episodes.append(Episode(state, action, reward, transition, episode_length)).to(device)
 
             start_index = end_index
         print("Done!")
@@ -170,73 +167,6 @@ class SafetyTestDataset:
         temp = self.episodes[self.index]
         self.index += 1
         return temp  # 返回下一个值
-
-
-class Summary(object):
-    """
-    Logs metrics to tensorboard files
-    """
-
-    def __init__(self, directory, agent_name, cfg):
-        """
-        Initializes a summary object.
-        :param directory: Saving directory of dirs
-        :param agent_name: Subfolder for the logs
-        :param cfg: Optional dictionary with parameters to be saved.
-        """
-        self.directory = os.path.join(directory,
-                                      agent_name,
-                                      datetime.now().strftime('%Y-%m-%d_%H-%M-%S'))
-        self.writer = SummaryWriter(log_dir=self.directory)
-        self.step = 1
-        self.episode = 1
-
-        if cfg is not None:
-            params = {
-                'AGENT': cfg['AGENT'],
-                'TRAIN_DATA_PATH': cfg['TRAIN_DATA_PATH'],
-                'EPOCHS': int(cfg['EPOCHS']),
-                'BATCH_SIZE': int(cfg['BATCH_SIZE']),
-                'EVAL_EPISODES': int(cfg['EVAL_EPISODES']),
-                'LEARNING_RATE': cfg['LEARNING_RATE'],
-                'GAMMA': cfg['GAMMA'],
-                'NUM_HEADS': int(cfg['NUM_HEADS']),
-                'TARGET_UPDATE_INTERVAL': int(cfg['TARGET_UPDATE_INTERVAL']),
-                'SUMMARY_CHECKPOINT': int(cfg['SUMMARY_CHECKPOINT'])
-            }
-            self.writer.add_hparams(hparam_dict=params, metric_dict={})
-
-    def add_scalar(self, tag: str, value, episode: bool = False):
-        """
-        Add a scalar to the summary
-        :param tag: Tag of scalar
-        :param value: Value of scalar
-        :param episode: Is the scalar accountable for a step or episode
-        """
-        step = self.step
-        if episode:
-            step = self.episode
-
-        self.writer.add_scalar(tag, value, step)
-
-    def adv_step(self):
-        """
-        Increase step counter
-        """
-        self.step += 1
-
-    def adv_episode(self):
-        """
-        Increase episode counter
-        """
-        self.episode += 1
-
-    def close(self):
-        """
-        Flush the cached metrics and close writer.
-        """
-        self.writer.flush()
-        self.writer.close()
 
 
 def main():

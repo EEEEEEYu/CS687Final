@@ -1,9 +1,8 @@
 import yaml
 import pandas as pd
-from DataProcess import generate_episode
 
 
-lists = generate_episode('data/small_dataset_0.csv','data/small_dataset_index_0.csv')
+lists = []
 states = range(18)
 actions = range(4)
 all_state_action_pair = []

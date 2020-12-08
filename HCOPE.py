@@ -9,10 +9,11 @@ from Agent import OfflineRandomEnsembleMixtureAgent
 
 
 class HCOPE:
-    def __init__(self, testing_data):
+    def __init__(self, testing_data, device):
         self.passed = 0
         self.total = 0
         self.dataset = testing_data
+        self.device = device
 
     def PDIS(self, agent, gamma):
         PDIS_array = []
