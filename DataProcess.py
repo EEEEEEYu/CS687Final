@@ -149,7 +149,7 @@ class SafetyTestDataset:
             action = torch.tensor(action, dtype = torch.int64).to(device)
             reward = torch.tensor(reward).float().to(device)
             transition = torch.tensor(transition).float().to(device)
-            self.episodes.append(Episode(state, action, reward, transition, episode_length)).to(device)
+            self.episodes.append(Episode(state, action, reward, transition, episode_length))
 
             start_index = end_index
         print("Done!")

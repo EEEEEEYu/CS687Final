@@ -47,18 +47,22 @@ class HCOPE:
                 agent = torch.load(file)
         PDIS_hat, sigma = self.PDIS(agent, gamma)
         estimated_value = PDIS_hat - sigma / np.sqrt(len(self.dataset)) * t.ppf(1 - 0.01, len(self.dataset) - 1)
+        self.total += 1
         if estimated_value > threshold:
             self.passed += 1
             print("Estimated J is: {}, Pass safety test! Current pass ratio: {}".format(estimated_value,float(self.passed / self.total)))
         else:
             print("Estimated J is {}, No solution found!".format(estimated_value))
-        self.total += 1
 
 
 def main():
     with open('config.yml', 'r') as ymlfile:
         config = yaml.load(ymlfile, Loader=yaml.FullLoader)
-    HCOPE(config)
+    testing_data = SafetyTestDataset(config['TEST_DATA_PATH'], config['TEST_INDEX_PATH'],
+                                     int(1000000 * config['TEST_PERCENTAGE']), config['STATE_DIMENSION'],
+                                     torch.device('cuda' if torch.cuda.is_available() else 'cpu'))
+    evaluation = HCOPE(testing_data, torch.device('cpu'))
+    evaluation.safety_test(1.4153,0.95)
 
 
 if __name__ == '__main__':
