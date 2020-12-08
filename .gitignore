@@ -3,3 +3,4 @@
 *.pkl
 *.pth
 .idea
+.DS_Store

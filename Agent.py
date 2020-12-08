@@ -4,6 +4,7 @@ import torchsummary
 import os
 import torch.optim as optim
 import numpy as np
+from torch.nn.functional import one_hot
 
 
 class DQNMultiHead(nn.Module):
@@ -12,6 +13,7 @@ class DQNMultiHead(nn.Module):
     kernel size 1 and grouped convolutions to simulate parallel computation
     of the respective heads.
     """
+
     def __init__(self, observation_space: int, action_space: int, num_heads: int):
         super(DQNMultiHead, self).__init__()
         self.num_heads = num_heads
@@ -31,7 +33,7 @@ class DQNMultiHead(nn.Module):
 
         self.elu = nn.ELU()
 
-    def forward(self,x):
+    def forward(self, x):
         x = self.fc1(x)
         x = self.bn1(x)
         x = self.elu(x)
@@ -51,12 +53,11 @@ class OfflineRandomEnsembleMixtureAgent:
     """
     Implementation of REM-DQN
     """
+
     def __init__(self, observation_space: int, action_space: int, config: dict):
         self.observation_space = observation_space
         self.action_space = action_space
-        self.summary_writer = None
         self.name = 'RandomEnsembleMixtureAgent'
-        self.summary_checkpoint = config['SUMMARY_CHECKPOINT']
         self.batches_done = 0
 
         self.target_update_steps = config['TARGET_UPDATE_INTERVAL']
@@ -98,14 +99,14 @@ class OfflineRandomEnsembleMixtureAgent:
         # Get Q(s,a) for actions taken and weigh
         actions = action.unsqueeze(-1).expand(self.num_heads, -1, -1)
         state_action_values = self.policy(state).gather(2, actions).squeeze()
-        state_action_values = torch.sum(alpha * state_action_values, dim = 0)
+        state_action_values = torch.sum(alpha * state_action_values, dim=0)
 
         # Get V(s') for the new states w/ mask for final state
         with torch.no_grad():
             all_next_states = self.target(new_state)
             all_next_states = torch.sum(all_next_states * alpha.unsqueeze(-1).expand(-1, -1, self.action_space),
-                                        dim = 0)
-            next_state_values, _ = torch.max(all_next_states, dim = 1)
+                                        dim=0)
+            next_state_values, _ = torch.max(all_next_states, dim=1)
             next_state_values[done] = 0
 
         # Get expected Q values
@@ -131,12 +132,11 @@ class OfflineRandomEnsembleMixtureAgent:
     def print_model(self):
         torchsummary.summary(self.policy, input_size=(self.observation_space,))
 
-    def get_action_prob(self,state):
+    def get_action_prob(self, state):
+        self.target.eval()
         with torch.no_grad():
-            self.policy.eval()
-            state = torch.tensor(state).float().unsqueeze(0).to(self.device)
-            avg_q_values = torch.mean(self.policy(state), dim=0)
-            return avg_q_values.softmax(dim = 1)
+            avg_q_values = torch.mean(self.target(state), dim=0)
+            return avg_q_values.softmax(dim=1)
 
     def get_total_loss(self):
         temp = self.loss_total
@@ -146,3 +146,17 @@ class OfflineRandomEnsembleMixtureAgent:
     def get_batches_done(self):
         return self.batches_done
 
+    def dump_policy(self, state_dim, action_dim):
+        self.target.eval()
+        if not os.path.exists('policy'):
+            os.mkdir('policy')
+        filename = "policy" + str(len(os.listdir('policy')) + 1)
+
+        with open(filename,'w') as file:
+            with torch.no_grad():
+                for i in range(state_dim):
+                    state = torch.tensor((i, i)).float()
+                    action_q_values = torch.mean(self.target(one_hot(state)), dim=0)
+                    action_prob = action_q_values.softmax(dim=1)
+                    for j in range(action_dim):
+                        file.write(action_prob[0][j])

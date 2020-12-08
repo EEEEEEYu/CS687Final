@@ -61,81 +61,36 @@ def split_dataset(config):
 class OfflineDataset(Dataset):
     """
     PyTorch Dataset class for trajectories in vector form.
-    Dump files only when there are no files. If we need to update dumped files, please manually remove previous files.
     """
 
     def __init__(self, episode_path, index_path, total_episodes, state_dim, folder):
         self.total_steps = 0
-        if os.path.exists(folder + '/state.pt') and os.path.exists(folder + '/action.pt') \
-                and os.path.exists(folder + '/reward.pt') and os.path.exists(folder + '/transition.pt') \
-                and os.path.exists(folder + '/next_state.pt') and os.path.exists(folder + '/done.pt'):
-            print("File already dumped! Loading...")
-            with open(folder + '/state.pt', 'rb') as file:
-                self.state = one_hot(torch.load(file), state_dim).float()
-            with open(folder + '/action.pt', 'rb') as file:
-                self.action = torch.tensor(torch.load(file), dtype=torch.int64)
-            with open(folder + '/reward.pt', 'rb') as file:
-                self.reward = torch.load(file).float()
-            with open(folder + '/transition.pt', 'rb') as file:
-                self.transition = torch.load(file).float()
-            with open(folder + '/next_state.pt', 'rb') as file:
-                self.next_state = one_hot(torch.load(file), state_dim).float()
-            with open(folder + '/done.pt', 'rb') as file:
-                self.done = torch.load(file).bool()
-            print("Load complete!")
-        else:
-            print("File not dumped! Generating...")
-            state, action, reward, transition, next_state, done = [], [], [], [], [], []
-            data = pd.read_csv(episode_path, header=None)
-            index = pd.read_csv(index_path, header=None)
-            start_index, end_index = 0, 0
-            for count in range(total_episodes):
-                episode_length = index.iloc[count, 0]
-                end_index += episode_length
+        print("Generating Training Dataset...")
+        state, action, reward, transition, next_state, done = [], [], [], [], [], []
+        data = pd.read_csv(episode_path, header=None)
+        index = pd.read_csv(index_path, header=None)
+        start_index, end_index = 0, 0
+        for count in range(total_episodes):
+            episode_length = index.iloc[count, 0]
+            end_index += episode_length
 
-                cur_state = data.iloc[start_index:end_index, 0].tolist()
-                state += cur_state
-                action += data.iloc[start_index:end_index, 1].tolist()
-                reward += data.iloc[start_index:end_index, 2].tolist()
-                transition += data.iloc[start_index:end_index, 3].tolist()
-                next_state += cur_state[1:] + [0]
-                done += [False] * episode_length
-                done[-1] = True
+            cur_state = data.iloc[start_index:end_index, 0].tolist()
+            state += cur_state
+            action += data.iloc[start_index:end_index, 1].tolist()
+            reward += data.iloc[start_index:end_index, 2].tolist()
+            transition += data.iloc[start_index:end_index, 3].tolist()
+            next_state += cur_state[1:] + [0]
+            done += [False] * episode_length
+            done[-1] = True
 
-                start_index = end_index
-            self.state = one_hot(torch.tensor(state, dtype=torch.int64), state_dim).float()
-            self.action = torch.tensor(action, dtype=torch.int64)
-            self.reward = torch.tensor(reward, dtype=torch.float)
-            self.transition = torch.tensor(transition, dtype=torch.float)
-            self.next_state = one_hot(torch.tensor(next_state, dtype=torch.int64), state_dim).float()
-            self.done = torch.tensor(done, dtype=torch.bool)
-            print("#######################")
-            print(self.state.shape)
-            print(self.action.shape)
-            print(self.reward.shape)
-            print(self.transition.shape)
-            print(self.next_state.shape)
-            print(self.done.shape)
-            print("#######################")
-
-            if not os.path.exists(folder):
-                os.makedirs(folder)
-
-            with open(folder + '/state.pt', 'wb') as file:
-                # Save state without one-hot encoding
-                torch.save(torch.tensor(state, dtype=torch.int64), file)
-            with open(folder + '/action.pt', 'wb') as file:
-                torch.save(self.action, file)
-            with open(folder + '/reward.pt', 'wb') as file:
-                torch.save(self.reward, file)
-            with open(folder + '/transition.pt', 'wb') as file:
-                torch.save(self.transition, file)
-            with open(folder + '/next_state.pt', 'wb') as file:
-                # Save next_state without one-hot encoding
-                torch.save(torch.tensor(next_state, dtype=torch.int64), file)
-            with open(folder + '/done.pt', 'wb') as file:
-                torch.save(self.done, file)
-            print("Load and dump complete!")
+            start_index = end_index
+        self.state = one_hot(torch.tensor(state, dtype=torch.int64), state_dim).float()
+        self.action = torch.tensor(action, dtype=torch.int64)
+        self.reward = torch.tensor(reward, dtype=torch.float)
+        self.transition = torch.tensor(transition, dtype=torch.float)
+        self.next_state = one_hot(torch.tensor(next_state, dtype=torch.int64), state_dim).float()
+        self.done = torch.tensor(done, dtype=torch.bool)
+        print("Done!")
 
     def __len__(self):
         return len(self.reward)
@@ -180,6 +135,7 @@ class SafetyTestDataset:
     def __init__(self, episode_path, index_path, total_episodes, state_dim):
         print("Generating safety test dataset......")
         self.episodes = []
+        self.index = 0
         data = pd.read_csv(episode_path, header=None)
         index = pd.read_csv(index_path, header=None)
         start_index, end_index = 0, 0
@@ -206,6 +162,16 @@ class SafetyTestDataset:
 
     def __getitem__(self, item):
         return self.episodes[item]
+
+    def __iter__(self):
+        return self.episodes
+
+    def __next__(self):
+        if self.index > len(self.episodes):  # 退出循环的条件
+            raise StopIteration();
+        temp = self.episodes[self.index]
+        self.index += 1
+        return temp  # 返回下一个值
 
 
 class Summary(object):
