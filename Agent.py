@@ -135,6 +135,7 @@ class OfflineRandomEnsembleMixtureAgent:
     def get_action_prob(self, state):
         self.target.eval()
         with torch.no_grad():
+            state.to(self.device)
             avg_q_values = torch.mean(self.target(state), dim=0)
             return avg_q_values.softmax(dim=1)
 

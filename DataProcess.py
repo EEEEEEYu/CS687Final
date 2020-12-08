@@ -155,7 +155,7 @@ class SafetyTestDataset:
             self.episodes.append(Episode(state, action, reward, transition, episode_length))
 
             start_index = end_index
-        print("Generating safety test dataset......Done!", flush=True)
+        print("Done!")
 
     def __len__(self):
         return len(self.episodes)
@@ -163,8 +163,6 @@ class SafetyTestDataset:
     def __getitem__(self, item):
         return self.episodes[item]
 
-    def __iter__(self):
-        return self.episodes
 
     def __next__(self):
         if self.index > len(self.episodes):  # 退出循环的条件
