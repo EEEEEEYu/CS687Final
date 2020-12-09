@@ -151,6 +151,10 @@ class OfflineRandomEnsembleMixtureAgent:
         self.policy.to(torch.device('cpu'))
         self.target.to(torch.device('cpu'))
 
+    def set_gpu(self):
+        self.policy.to(torch.device('cuda' if torch.cuda.is_available() else 'cpu'))
+        self.target.to(torch.device('cuda' if torch.cuda.is_available() else 'cpu'))
+
     def dump_policy(self, state_dim, action_dim):
         self.target.eval()
         if not os.path.exists('policy'):
