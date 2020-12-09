@@ -148,10 +148,12 @@ class OfflineRandomEnsembleMixtureAgent:
         return self.batches_done
 
     def set_cpu(self):
+        self.device = torch.device('cpu')
         self.policy.to(torch.device('cpu'))
         self.target.to(torch.device('cpu'))
 
     def set_gpu(self):
+        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         self.policy.to(torch.device('cuda' if torch.cuda.is_available() else 'cpu'))
         self.target.to(torch.device('cuda' if torch.cuda.is_available() else 'cpu'))
 
@@ -159,12 +161,12 @@ class OfflineRandomEnsembleMixtureAgent:
         self.target.eval()
         if not os.path.exists('policy'):
             os.mkdir('policy')
-        filename = "policy" + str(len(os.listdir('policy')) + 1)
+        filename = "policy" + str(len(os.listdir('policy')) + 1) + ".txt"
 
         with open(filename,'w') as file:
             with torch.no_grad():
                 for i in range(state_dim):
-                    state = torch.tensor((i, i)).float()
+                    state = torch.tensor((i, i)).float().to(self.device)
                     action_q_values = torch.mean(self.target(one_hot(state)), dim=0)
                     action_prob = action_q_values.softmax(dim=1)
                     for j in range(action_dim):

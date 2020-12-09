@@ -56,7 +56,7 @@ def train(config: dict):
             if i_batch == len(data_loader)-1 or (i_batch > 0 and i_batch % config['CHECKPOINT_SAVE_INTERVAL'] == 0):
                 print("Batch trained:" + str(i_batch) + " Loss for new batches:" + str(agent.get_total_loss()),"Checkpoint......")
                 # Save agent
-                with open(config['CHECKPOINT_PATH']+str(epoch), 'wb') as file:
+                with open(config['CHECKPOINT_PATH']+str(epoch)+".pth", 'wb') as file:
                     # Dump cpu type agent for evaluation, colab is running slow using GPU for HCOPE
                     agent.set_cpu()
                     torch.save(agent, file)
