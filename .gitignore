@@ -2,9 +2,11 @@
 *.pt
 *.pkl
 *.pth
-/.idea
-/checkpoint
 *.iml
 *.xml
 *.pdf
+*.txt
 .DS_Store
+/.idea
+/checkpoint
+/policy

@@ -160,14 +160,14 @@ class OfflineRandomEnsembleMixtureAgent:
     def dump_policy(self, state_dim, action_dim):
         self.target.eval()
         if not os.path.exists('policy'):
-            os.mkdir('policy')
-        filename = "policy" + str(len(os.listdir('policy')) + 1) + ".txt"
+            os.makedirs('policy')
+        filename = "policy/policy" + str(len(os.listdir('policy')) + 1) + ".txt"
 
         with open(filename,'w') as file:
             with torch.no_grad():
                 for i in range(state_dim):
-                    state = torch.tensor((i, i)).float().to(self.device)
-                    action_q_values = torch.mean(self.target(one_hot(state)), dim=0)
+                    state = one_hot(torch.tensor([i, i],dtype = torch.int64),state_dim).float().to(self.device)
+                    action_q_values = torch.mean(self.target(state), dim=0)
                     action_prob = action_q_values.softmax(dim=1)
                     for j in range(action_dim):
-                        file.write(action_prob[0][j])
+                        file.write(str(float(action_prob[0][j]))+'\n')
