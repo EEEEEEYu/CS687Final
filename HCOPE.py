@@ -2,6 +2,7 @@ import torch
 import yaml
 import numpy as np
 import os
+from tqdm import tqdm
 from scipy.stats import t
 from torch.utils.data import DataLoader
 from DataProcess import OfflineDataset, SafetyTestDataset
@@ -9,16 +10,17 @@ from Agent import OfflineRandomEnsembleMixtureAgent
 
 
 class HCOPE:
-    def __init__(self, testing_data, device):
+    def __init__(self, testing_data, device, config):
         self.passed = 0
         self.total = 0
         self.dataset = testing_data
         self.device = device
+        self.config = config
 
     def PDIS(self, agent, gamma):
         PDIS_array = []
         N = len(self.dataset)
-        for sampled_episode in self.dataset:
+        for sampled_episode in tqdm(self.dataset):
             state = sampled_episode.get_state()
             action = sampled_episode.get_action()
             reward = sampled_episode.get_reward()
@@ -42,10 +44,13 @@ class HCOPE:
     def safety_test(self, threshold, gamma, agent=None):
         print("Doing safety test......")
         if agent is None:
-            with open('checkpoint/checkpoint.pth', 'rb') as file:
-                # agent = torch.load(file,map_location=lambda storage,loc:storage.cuda(0)) # CPU to GPU
-                # agent = torch.load(file,map_location=lambda storage,loc:storage)  # GPU to CPU
-                agent = torch.load(file)
+            if os.path.exists('checkpoint/checkpoint.pth'):
+                with open('checkpoint/checkpoint.pth', 'rb') as file:
+                    # agent = torch.load(file,map_location=lambda storage,loc:storage.cuda(0)) # CPU to GPU
+                    # agent = torch.load(file,map_location=lambda storage,loc:storage)  # GPU to CPU
+                    agent = torch.load(file)
+            else:
+                agent = OfflineRandomEnsembleMixtureAgent(18,4,self.config)
         PDIS_hat, sigma = self.PDIS(agent, gamma)
         estimated_value = PDIS_hat - sigma / np.sqrt(len(self.dataset)) * t.ppf(1 - 0.01, len(self.dataset) - 1)
         self.total += 1
@@ -62,7 +67,7 @@ def main():
     testing_data = SafetyTestDataset(config['TEST_DATA_PATH'], config['TEST_INDEX_PATH'],
                                      int(1000000 * config['TEST_PERCENTAGE']), config['STATE_DIMENSION'],
                                      torch.device('cuda' if torch.cuda.is_available() else 'cpu'))
-    evaluation = HCOPE(testing_data, torch.device('cpu'))
+    evaluation = HCOPE(testing_data, torch.device('cuda' if torch.cuda.is_available() else 'cpu'), config)
     evaluation.safety_test(1.4153,0.95)
 
 
