@@ -38,7 +38,6 @@ class HCOPE:
         PDIS_array = np.array(PDIS_array)
         PDIS_hat = np.sum(PDIS_array).item() / N
         sigma = np.sqrt(np.sum(np.power(PDIS_array - PDIS_hat, 2)) / (N - 1))
-        print(PDIS_hat)
         return PDIS_hat, sigma
 
     def safety_test(self, threshold, gamma, agent=None):
@@ -52,6 +51,7 @@ class HCOPE:
             else:
                 agent = OfflineRandomEnsembleMixtureAgent(18,4,self.config)
         PDIS_hat, sigma = self.PDIS(agent, gamma)
+        print("Average PDIS:{}".format(PDIS_hat))
         estimated_value = PDIS_hat - sigma / np.sqrt(len(self.dataset)) * t.ppf(1 - 0.01, len(self.dataset) - 1)
         self.total += 1
         if estimated_value > threshold:
