@@ -3,6 +3,7 @@
 *.pkl
 *.pth
 /.idea
+/checkpoint
 *.iml
 *.xml
 *.pdf
