@@ -57,10 +57,8 @@ def train(config: dict):
                 print("Batch trained:" + str(i_batch) + " Loss for new batches:" + str(agent.get_total_loss()),"Checkpoint......")
                 # Save agent
                 with open(config['CHECKPOINT_PATH']+str(epoch)+".pth", 'wb') as file:
-                    # Dump cpu type agent for evaluation, colab is running slow using GPU for HCOPE
-                    agent.set_cpu()
+                    # Dump agent for cpu evaluation, colab is running slow using GPU for HCOPE
                     torch.save(agent, file)
-                    agent.set_gpu()
         # Do evaluation and safety test
         if epoch >= config['SAFETY_TEST_START'] and config['SAFETY_TEST']:
             evaluation.safety_test(config['LOWER_BOUND'], config['GAMMA'], agent)

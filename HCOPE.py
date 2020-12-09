@@ -51,11 +51,10 @@ class HCOPE:
                     agent.set_cpu()
             else:
                 agent = OfflineRandomEnsembleMixtureAgent(18,4,self.config)
-        #PDIS_hat, sigma = self.PDIS(agent, gamma)
-        #print("Average PDIS:{} sigma:{}".format(PDIS_hat,sigma))
-        #estimated_value = PDIS_hat - sigma / np.sqrt(len(self.dataset)) * t.ppf(1 - 0.01, len(self.dataset) - 1)
+        PDIS_hat, sigma = self.PDIS(agent, gamma)
+        print("Average PDIS:{} sigma:{}".format(PDIS_hat,sigma))
+        estimated_value = PDIS_hat - sigma / np.sqrt(len(self.dataset)) * t.ppf(1 - 0.01, len(self.dataset) - 1)
         self.total += 1
-        estimated_value = 3
         if estimated_value > threshold:
             self.passed += 1
             print("Estimated J is: {}, Pass safety test! Current pass ratio: {}".format(estimated_value,float(self.passed / self.total)))
