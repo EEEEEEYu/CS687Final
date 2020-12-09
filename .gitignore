@@ -3,4 +3,7 @@
 *.pkl
 *.pth
 /.idea
+*.iml
+*.xml
+*.pdf
 .DS_Store

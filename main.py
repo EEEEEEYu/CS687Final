@@ -45,11 +45,14 @@ def train(config: dict):
                              pin_memory=True,
                              num_workers=8)
 
-    print('Start training with {} epochs'.format(config['EPOCHS']))
+    print('Start training with {} epochs and learning rate {}'.format(config['EPOCHS'],config['LEARNING_RATE']))
     if not os.path.exists('checkpoint'):
         os.makedirs('checkpoint')
     for epoch in range(1, config['EPOCHS'] + 1):
         print("############### EPOCH:"+str(epoch)+" ###############")
+        # Do evaluation and safety test
+        if epoch >= config['SAFETY_TEST_START'] and config['SAFETY_TEST']:
+            evaluation.safety_test(config['LOWER_BOUND'], config['GAMMA'], agent)
         for i_batch, sample_batched in enumerate(tqdm(data_loader, leave=False)):
             agent.learn(sample_batched)
             if i_batch == len(data_loader)-1 or (i_batch > 0 and i_batch % config['CHECKPOINT_SAVE_INTERVAL'] == 0):
@@ -57,9 +60,6 @@ def train(config: dict):
                 # Save agent
                 with open(config['CHECKPOINT_PATH'], 'wb') as file:
                     torch.save(agent, file)
-                # Do evaluation and safety test
-                if epoch >= 1:
-                    evaluation.safety_test(config['LOWER_BOUND'], config['GAMMA'], agent)
 
 
 def main():
