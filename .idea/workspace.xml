@@ -20,8 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b64aed70-bc7e-440e-bf87-62e4a749fd0d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/687final.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/687final.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +50,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
-  <component name="RunManager" selected="Python.HCOPE">
+  <component name="RunManager" selected="Python.main">
     <configuration name="Agent" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="687final" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -148,9 +147,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main" />
         <item itemvalue="Python.HCOPE" />
         <item itemvalue="Python.Agent" />
-        <item itemvalue="Python.main" />
         <item itemvalue="Python.DataProcess" />
       </list>
     </recent_temporary>

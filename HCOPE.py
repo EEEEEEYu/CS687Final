@@ -40,6 +40,7 @@ class HCOPE:
         return PDIS_hat, sigma
 
     def safety_test(self, threshold, gamma, agent=None):
+        print("Doing safety test......")
         if agent is None:
             with open('checkpoint/checkpoint.pth', 'rb') as file:
                 # agent = torch.load(file,map_location=lambda storage,loc:storage.cuda(0)) # CPU to GPU
