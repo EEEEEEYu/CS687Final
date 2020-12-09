@@ -34,7 +34,7 @@ class HCOPE:
                 cur_gamma *= gamma
             PDIS_array.append(PDIS_H)
         PDIS_array = np.array(PDIS_array)
-        PDIS_hat = np.sum(PDIS_array) / N
+        PDIS_hat = np.sum(PDIS_array).item() / N
         sigma = np.sqrt(np.sum(np.power(PDIS_array - PDIS_hat, 2)) / (N - 1))
         print(PDIS_hat)
         return PDIS_hat, sigma

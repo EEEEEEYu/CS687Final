@@ -13,7 +13,7 @@ def split_dataset(config):
         # Read total count 1000000
         total_episode_count = int(original_file.readline())
         train_episode_count = int(total_episode_count * float(config['TRAIN_PERCENTAGE']))
-        test_episode_count = total_episode_count - train_episode_count
+        test_episode_count = int(total_episode_count * float(config['TEST_PERCENTAGE']))
 
         # Split dataset into 2 groups. Each group has two files storing index and episodes
         # Do split every call
