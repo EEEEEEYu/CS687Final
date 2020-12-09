@@ -37,8 +37,8 @@ def train(config: dict):
     print('Initializing Testing Data......')
     testing_data = SafetyTestDataset(config['TEST_DATA_PATH'], config['TEST_INDEX_PATH'],
                                      int(1000000 * config['TEST_PERCENTAGE']), config['STATE_DIMENSION'],
-                                     torch.device('cpu'))
-    evaluation = HCOPE(testing_data, torch.device('cpu'), config)
+                                     device)
+    evaluation = HCOPE(testing_data, device, config)
     data_loader = DataLoader(dataset=training_data,
                              batch_size=config['BATCH_SIZE'],
                              shuffle=True,
@@ -56,7 +56,7 @@ def train(config: dict):
             if i_batch == len(data_loader)-1 or (i_batch > 0 and i_batch % config['CHECKPOINT_SAVE_INTERVAL'] == 0):
                 print("Batch trained:" + str(i_batch) + " Loss for new batches:" + str(agent.get_total_loss()),"Checkpoint......")
                 # Save agent
-                with open(config['CHECKPOINT_PATH'], 'wb') as file:
+                with open(config['CHECKPOINT_PATH']+str(epoch), 'wb') as file:
                     torch.save(agent, file)
         # Do evaluation and safety test
         if epoch >= config['SAFETY_TEST_START'] and config['SAFETY_TEST']:
