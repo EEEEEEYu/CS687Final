@@ -58,7 +58,7 @@ def train(config: dict):
                 with open(config['CHECKPOINT_PATH'], 'wb') as file:
                     torch.save(agent, file)
                 # Do evaluation and safety test
-                if epoch > 2:
+                if epoch >= 1:
                     evaluation.safety_test(config['LOWER_BOUND'], config['GAMMA'], agent)
 
 

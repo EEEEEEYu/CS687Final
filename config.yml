@@ -5,7 +5,7 @@ TRAIN_DATA_PATH: data/training_episodes.csv
 TRAIN_INDEX_PATH: data/training_index.csv
 TEST_DATA_PATH: data/testing_episodes.csv
 TEST_INDEX_PATH: data/testing_index.csv
-TRAIN_PERCENTAGE: 0.05
+TRAIN_PERCENTAGE: 0.02
 TEST_PERCENTAGE: 0.2
 
 
