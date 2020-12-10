@@ -71,20 +71,22 @@ class HCOPE:
         file_list = os.listdir('checkpoint')
         if not os.path.exists('rank'):
             os.makedirs('rank')
-        if not os.path.exists('rank/rank.pth'):
-            with open('rank/rank.pth','wb') as file:
+        if not os.path.exists('rank/already_done.pth'):
+            with open('rank/already_done.pth','wb') as file:
                 torch.save(file,0)
         estimation_dict = {}
-        with open('rank/rank.pth', 'rb') as file:
+        with open('rank/already_done.pth', 'rb') as file:
             already_done = torch.load(file)
         for index, checkpoint in enumerate(file_list):
-            if index <= already_done:
+            if index < already_done:
                 continue
             print("Estimating policy{}......".format(index))
             estimated_value = self.safety_test(self.config['LOWER_BOUND'], self.config['GAMMA'], checkpoint)
             estimation_dict[checkpoint] = estimated_value
             with open("rank/rank.pth", 'wb') as file:
                 torch.save(estimation_dict, file)
+            with open("rank/already_done.pth",'wb') as file:
+                torch.save(index+1,file)
 
     def generate_policy(self):
         print("Dumping policy......")
