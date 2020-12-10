@@ -69,6 +69,7 @@ class HCOPE:
     def calculate_estimation(self):
         print("Calculating all policy evaluations......")
         file_list = os.listdir('checkpoint')
+        file_list = sorted(file_list)
         if not os.path.exists('rank'):
             os.makedirs('rank')
         if not os.path.exists('rank/already_done.pth'):
