@@ -68,9 +68,6 @@ def train(config: dict):
                 # Dump agent for cpu evaluation, colab is running slow using GPU for HCOPE
                 with open(config['CHECKPOINT_DIRECTORY']+'/checkpoint'+str(len(os.listdir('checkpoint')))+".pth", 'wb') as file:
                     torch.save(agent, file)
-        # Do evaluation and safety test if configured
-        if config['SAFETY_TEST'] and epoch >= config['SAFETY_TEST_START']:
-            evaluation.safety_test(config['LOWER_BOUND'], config['GAMMA'], agent)
         checkpoint_offset = epoch + 1
         # Dump checkpoint offset to recover next training
         with open(config['CHECKPOINT_DIRECTORY'] + '/checkpoint_offset.pth', 'wb') as file:

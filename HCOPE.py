@@ -40,14 +40,14 @@ class HCOPE:
         sigma = np.sqrt(np.sum(np.power(PDIS_array - PDIS_hat, 2)) / (N - 1))
         return PDIS_hat, sigma
 
-    def safety_test(self, threshold, gamma, checkpoint, agent=None):
+    def safety_test(self, threshold, gamma, checkpoint, agent = None):
         print("Doing safety test......")
         if agent is None:
             if os.path.exists('checkpoint/' + checkpoint):
                 with open('checkpoint/' + checkpoint, 'rb') as file:
                     # agent = torch.load(file,map_location=lambda storage,loc:storage.cuda(0)) # CPU to GPU
                     # agent = torch.load(file,map_location=lambda storage,loc:storage)  # GPU to CPU
-                    agent = torch.load(file, map_location=lambda storage, loc: storage)
+                    agent = torch.load(file, map_location = lambda storage, loc: storage)
                     agent.set_cpu()
             else:
                 print("Using random agent for testing......")
@@ -60,32 +60,55 @@ class HCOPE:
             self.passed += 1
             print("Estimated J is: {}, Pass safety test! Current pass ratio: {}".format(estimated_value, float(
                 self.passed / self.total)))
-            if self.config['DUMP_POLICY']:
-                agent.dump_policy(self.config['STATE_DIMENSION'], self.config['ACTION_DIMENSION'])
+
         else:
             print("Estimated J is {}, No solution found!".format(estimated_value))
 
         return estimated_value
 
-    def generate_policy(self):
+    def calculate_estimation(self):
+        print("Calculating all policy evaluations......")
         file_list = os.listdir('checkpoint')
-        estimation_list = []
-        for index,checkpoint in enumerate(file_list):
+        if not os.path.exists('rank'):
+            os.makedirs('rank')
+        if not os.path.exists('rank/rank.pth'):
+            with open('rank/rank.pth','wb') as file:
+                torch.save(file,0)
+        estimation_dict = {}
+        with open('rank/rank.pth', 'rb') as file:
+            already_done = torch.load(file)
+        for index, checkpoint in enumerate(file_list):
+            if index <= already_done:
+                continue
             print("Estimating policy{}......".format(index))
-            estimated_value=self.safety_test(self.config['LOWER_BOUND'], self.config['GAMMA'], checkpoint)
-            estimation_list.append((checkpoint,estimated_value))
-            with open("rank/rank.pth",'wb') as file:
-                torch.save(estimation_list,file)
+            estimated_value = self.safety_test(self.config['LOWER_BOUND'], self.config['GAMMA'], checkpoint)
+            estimation_dict[checkpoint] = estimated_value
+            with open("rank/rank.pth", 'wb') as file:
+                torch.save(estimation_dict, file)
+
+    def generate_policy(self):
+        print("Dumping policy......")
+        with open('rank/rank.pth', 'rb') as file:
+            estimation_dict = torch.load(file)
+            desc_sorted_agents = sorted(list(estimation_dict.items()), key = lambda x: -x[1])
+            desc_sorted_agents = desc_sorted_agents[0:100]
+            for i in range(100):
+                agent = torch.load(desc_sorted_agents[i][0])
+                agent.dump_policy(self.config['STATE_DIMENSION'], self.config['ACTION_DIMENSION'])
+        print("Done!")
 
 
 def main():
     with open('config.yml', 'r') as ymlfile:
-        config = yaml.load(ymlfile, Loader=yaml.FullLoader)
+        config = yaml.load(ymlfile, Loader = yaml.FullLoader)
     split_dataset(config)
     testing_data = SafetyTestDataset(config['TEST_DATA_PATH'], config['TEST_INDEX_PATH'],
                                      int(1000000 * config['TEST_PERCENTAGE']), config['STATE_DIMENSION'],
                                      torch.device('cuda' if torch.cuda.is_available() else 'cpu'))
     evaluation = HCOPE(testing_data, torch.device('cuda' if torch.cuda.is_available() else 'cpu'), config)
+
+
+    evaluation.calculate_estimation()
     evaluation.generate_policy()
 
 
