@@ -5,7 +5,7 @@ import os
 from tqdm import tqdm
 from scipy.stats import t
 from torch.utils.data import DataLoader
-from DataProcess import OfflineDataset, SafetyTestDataset
+from DataProcess import OfflineDataset, SafetyTestDataset, split_dataset
 from Agent import OfflineRandomEnsembleMixtureAgent
 
 
@@ -81,6 +81,7 @@ class HCOPE:
 def main():
     with open('config.yml', 'r') as ymlfile:
         config = yaml.load(ymlfile, Loader=yaml.FullLoader)
+    split_dataset(config)
     testing_data = SafetyTestDataset(config['TEST_DATA_PATH'], config['TEST_INDEX_PATH'],
                                      int(1000000 * config['TEST_PERCENTAGE']), config['STATE_DIMENSION'],
                                      torch.device('cuda' if torch.cuda.is_available() else 'cpu'))
