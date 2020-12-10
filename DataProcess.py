@@ -160,7 +160,6 @@ class SafetyTestDataset:
     def __getitem__(self, item):
         return self.episodes[item]
 
-
     def __next__(self):
         if self.index > len(self.episodes):  # 退出循环的条件
             raise StopIteration();

@@ -40,28 +40,35 @@ class HCOPE:
         sigma = np.sqrt(np.sum(np.power(PDIS_array - PDIS_hat, 2)) / (N - 1))
         return PDIS_hat, sigma
 
-    def safety_test(self, threshold, gamma, agent=None):
+    def safety_test(self, threshold, gamma, checkpoint, agent=None):
         print("Doing safety test......")
         if agent is None:
-            if os.path.exists('checkpoint/checkpoint.pth'):
-                with open('checkpoint/checkpoint.pth', 'rb') as file:
+            if os.path.exists('checkpoint/' + checkpoint):
+                with open('checkpoint/' + checkpoint, 'rb') as file:
                     # agent = torch.load(file,map_location=lambda storage,loc:storage.cuda(0)) # CPU to GPU
                     # agent = torch.load(file,map_location=lambda storage,loc:storage)  # GPU to CPU
-                    agent = torch.load(file,map_location=lambda storage, loc: storage)
+                    agent = torch.load(file, map_location=lambda storage, loc: storage)
                     agent.set_cpu()
             else:
-                agent = OfflineRandomEnsembleMixtureAgent(18,4,self.config)
+                print("Using random agent for testing......")
+                agent = OfflineRandomEnsembleMixtureAgent(18, 4, self.config)
         PDIS_hat, sigma = self.PDIS(agent, gamma)
-        print("Average PDIS:{} sigma:{}".format(PDIS_hat,sigma))
+        print("Average PDIS:{} sigma:{}".format(PDIS_hat, sigma))
         estimated_value = PDIS_hat - sigma / np.sqrt(len(self.dataset)) * t.ppf(1 - 0.01, len(self.dataset) - 1)
         self.total += 1
         if estimated_value > threshold:
             self.passed += 1
-            print("Estimated J is: {}, Pass safety test! Current pass ratio: {}".format(estimated_value,float(self.passed / self.total)))
+            print("Estimated J is: {}, Pass safety test! Current pass ratio: {}".format(estimated_value, float(
+                self.passed / self.total)))
             if self.config['DUMP_POLICY']:
                 agent.dump_policy(self.config['STATE_DIMENSION'], self.config['ACTION_DIMENSION'])
         else:
             print("Estimated J is {}, No solution found!".format(estimated_value))
+
+    def generate_policy(self):
+        file_list = os.listdir('checkpoint')
+        for checkpoint in file_list:
+            self.safety_test(self.config['THRESHOLD'], self.config['GAMMA'], checkpoint)
 
 
 def main():
@@ -71,7 +78,7 @@ def main():
                                      int(1000000 * config['TEST_PERCENTAGE']), config['STATE_DIMENSION'],
                                      torch.device('cuda' if torch.cuda.is_available() else 'cpu'))
     evaluation = HCOPE(testing_data, torch.device('cuda' if torch.cuda.is_available() else 'cpu'), config)
-    evaluation.safety_test(1.4153,0.95)
+    evaluation.generate_policy()
 
 
 if __name__ == '__main__':

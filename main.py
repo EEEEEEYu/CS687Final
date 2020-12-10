@@ -24,7 +24,7 @@ def train(config: dict):
         print("Checkpoint found, loading previous agent......")
         with open(config['CHECKPOINT_DIRECTORY']+'/checkpoint_offset.pth','rb') as file:
             checkpoint_offset = torch.load(file)
-        with open(config['CHECKPOINT_DIRECTORY']+'/checkpoint'+str(checkpoint_offset)+'.pth', 'rb') as file:
+        with open(config['CHECKPOINT_DIRECTORY']+'/checkpoint'+str(len(os.listdir('checkpoint')))+'.pth', 'rb') as file:
             agent = torch.load(file)
     else:
         print("No checkpoint found, initializing new agent......")
@@ -58,21 +58,23 @@ def train(config: dict):
 
 
     print('Start training with {} epochs and learning rate {}'.format(config['EPOCHS'],config['LEARNING_RATE']))
-    for epoch in range(checkpoint_offset, config['EPOCHS'] + 1):
+    start_epoch = checkpoint_offset
+    for epoch in range(start_epoch, config['EPOCHS'] + 1):
         print("################### EPOCH:"+str(epoch)+" ###################")
         for i_batch, sample_batched in enumerate(tqdm(data_loader, leave=False)):
             agent.learn(sample_batched)
             if (i_batch > 0 and i_batch % config['CHECKPOINT_SAVE_INTERVAL'] == 0) or (i_batch == len(data_loader)-1):
                 print("Batch trained:" + str(i_batch) + " Loss for new batches:" + str(agent.get_total_loss()),"Checkpoint......")
                 # Dump agent for cpu evaluation, colab is running slow using GPU for HCOPE
-                with open(config['CHECKPOINT_DIRECTORY']+'/checkpoint'+str(epoch)+".pth", 'wb') as file:
+                with open(config['CHECKPOINT_DIRECTORY']+'/checkpoint'+str(len(os.listdir('checkpoint')))+".pth", 'wb') as file:
                     torch.save(agent, file)
-                # Dump checkpoint offset to recover training
-                with open(config['CHECKPOINT_DIRECTORY']+'/checkpoint_offset.pth','wb') as file:
-                    torch.save(epoch, file)
         # Do evaluation and safety test if configured
         if config['SAFETY_TEST'] and epoch >= config['SAFETY_TEST_START']:
             evaluation.safety_test(config['LOWER_BOUND'], config['GAMMA'], agent)
+        checkpoint_offset = epoch + 1
+        # Dump checkpoint offset to recover next training
+        with open(config['CHECKPOINT_DIRECTORY'] + '/checkpoint_offset.pth', 'wb') as file:
+            torch.save(checkpoint_offset, file)
 
 
 def main():
