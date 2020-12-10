@@ -65,10 +65,17 @@ class HCOPE:
         else:
             print("Estimated J is {}, No solution found!".format(estimated_value))
 
+        return estimated_value
+
     def generate_policy(self):
         file_list = os.listdir('checkpoint')
-        for checkpoint in file_list:
-            self.safety_test(self.config['THRESHOLD'], self.config['GAMMA'], checkpoint)
+        estimation_list = []
+        for index,checkpoint in enumerate(file_list):
+            print("Estimating policy{}......".format(index))
+            estimated_value=self.safety_test(self.config['LOWER_BOUND'], self.config['GAMMA'], checkpoint)
+            estimation_list.append((checkpoint,estimated_value))
+            with open("rank/rank.pth",'wb') as file:
+                torch.save(estimation_list,file)
 
 
 def main():
