@@ -20,6 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b64aed70-bc7e-440e-bf87-62e4a749fd0d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/687final.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/687final.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HCOPE.py" beforeDir="false" afterPath="$PROJECT_DIR$/HCOPE.py" afterDir="false" />
     </list>
@@ -170,10 +172,10 @@
     </configuration>
     <list>
       <item itemvalue="Python.Agent" />
+      <item itemvalue="Python.DataExploration" />
       <item itemvalue="Python.DataProcess" />
       <item itemvalue="Python.HCOPE" />
       <item itemvalue="Python.main" />
-      <item itemvalue="Python.DataExploration" />
     </list>
     <recent_temporary>
       <list>
@@ -300,11 +302,5 @@
       <screen x="0" y="23" width="1440" height="823" />
     </state>
     <state x="355" y="59" width="604" height="735" key="find.popup/0.23.1440.823@0.23.1440.823" timestamp="1607310666570" />
-  </component>
-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/CS687Final$main.coverage" NAME="main Coverage Results" MODIFIED="1607517321489" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/CS687Final$DataProcess.coverage" NAME="DataProcess Coverage Results" MODIFIED="1607172725197" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/CS687Final$HCOPE.coverage" NAME="HCOPE Coverage Results" MODIFIED="1607617121783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/CS687Final$Agent.coverage" NAME="Agent Coverage Results" MODIFIED="1607264092278" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

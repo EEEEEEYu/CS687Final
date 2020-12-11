@@ -74,7 +74,7 @@ class HCOPE:
             os.makedirs('rank')
         if not os.path.exists('rank/already_done.pth'):
             with open('rank/already_done.pth','wb') as file:
-                torch.save(file,0)
+                torch.save(0,file)
         estimation_dict = {}
         with open('rank/already_done.pth', 'rb') as file:
             already_done = torch.load(file)
