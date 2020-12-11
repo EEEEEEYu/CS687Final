@@ -137,7 +137,7 @@ class OfflineRandomEnsembleMixtureAgent:
         with torch.no_grad():
             state.to(self.device)
             avg_q_values = torch.mean(self.target(state), dim=0)
-            return avg_q_values.softmax(dim=1)
+            return (avg_q_values*6).softmax(dim=1)
 
     def get_total_loss(self):
         temp = self.loss_total
@@ -168,6 +168,6 @@ class OfflineRandomEnsembleMixtureAgent:
                 for i in range(state_dim):
                     state = one_hot(torch.tensor([i, i],dtype = torch.int64),state_dim).float().to(self.device)
                     action_q_values = torch.mean(self.target(state), dim=0)
-                    action_prob = action_q_values.softmax(dim=1)
+                    action_prob = (action_q_values*6).softmax(dim=1)
                     for j in range(action_dim):
                         file.write(str(float(action_prob[0][j]))+'\n')

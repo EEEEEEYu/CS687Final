@@ -99,8 +99,9 @@ class HCOPE:
             estimation_dict = torch.load(file)
             desc_sorted_agents = sorted(list(estimation_dict.items()), key = lambda x: -x[1])
             desc_sorted_agents = desc_sorted_agents[0:100]
-            for i in range(100):
-                agent = torch.load(desc_sorted_agents[i][0])
+            for i in range(len(desc_sorted_agents) if len(desc_sorted_agents)<100 else 100):
+                agent = torch.load('checkpoint/'+desc_sorted_agents[i][0], map_location=lambda storage, loc: storage)
+                agent.set_cpu()
                 agent.dump_policy(self.config['STATE_DIMENSION'], self.config['ACTION_DIMENSION'])
         print("Done!")
 
@@ -113,8 +114,6 @@ def main():
                                      int(1000000 * config['TEST_PERCENTAGE']), config['STATE_DIMENSION'],
                                      torch.device('cuda' if torch.cuda.is_available() else 'cpu'))
     evaluation = HCOPE(testing_data, torch.device('cuda' if torch.cuda.is_available() else 'cpu'), config)
-
-
     evaluation.calculate_estimation()
     evaluation.generate_policy()
 

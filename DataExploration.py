@@ -9,7 +9,7 @@ from scipy.stats import t
 
 def Explore():
     data = pd.read_csv('data/training_episodes.csv', header=None)
-    print(data[(data[0] == 6)][1].unique())
+    print(data[(data[2]!=0) & (data[0]==14)])
 
 
 class Episode:
