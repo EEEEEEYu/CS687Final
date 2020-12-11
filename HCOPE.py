@@ -75,9 +75,13 @@ class HCOPE:
         if not os.path.exists('rank/already_done.pth'):
             with open('rank/already_done.pth','wb') as file:
                 torch.save(0,file)
-        estimation_dict = {}
+        if not os.path.exists('rank/rank.pth'):
+            with open('rank/rank.pth','wb') as file:
+                torch.save({},file)
         with open('rank/already_done.pth', 'rb') as file:
             already_done = torch.load(file)
+        with open('rank/rank.pth','rb') as file:
+            estimation_dict = torch.load(file)
         for index, checkpoint in enumerate(file_list):
             if index < already_done:
                 continue
